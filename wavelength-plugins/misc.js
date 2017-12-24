@@ -8,8 +8,6 @@
  */
 'use strict';
 
-let fs = require('fs');
-
 function clearRoom(room) {
 	let len = (room.log && room.log.length) || 0;
 	let users = [];
@@ -143,7 +141,7 @@ exports.commands = {
 	showhelp: ["/show - Displays user's global rank. Requires: & ~"],
 
 	credits: function (target, room, user) {
-		let popup = "|html|" + "<font size=5 color=#0066ff><u><b>" + Condig.serverName + " Credits</b></u></font><br />" +
+		let popup = "|html|" + "<font size=5 color=#0066ff><u><b>" + Config.serverName + " Credits</b></u></font><br />" +
 			"<br />" +
 			"<u><b>Server Maintainers:</u></b><br />" +
 			"- " + WL.nameColor('Prince Sky', true) + " (Owner, Sysadmin, Policy Admin, Server Host)<br />" +
