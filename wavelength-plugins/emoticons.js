@@ -36,7 +36,7 @@ function saveEmoticons() {
 
 function parseEmoticons(message, room) {
 	if (emoteRegex.test(message)) {
-		let size = 40;
+		let size = 35;
 		let lobby = Rooms(`lobby`);
 		if (lobby && lobby.emoteSize) size = lobby.emoteSize;
 		message = WL.parseMessage(message).replace(emoteRegex, function (match) {
@@ -84,7 +84,7 @@ exports.commands = {
 			emoticons[targetSplit[0]] = targetSplit[1];
 			saveEmoticons();
 
-			let size = 40;
+			let size = 35;
 			let lobby = Rooms(`lobby`);
 			if (lobby && lobby.emoteSize) size = lobby.emoteSize;
 			if (room.emoteSize) size = room.emoteSize;
@@ -127,13 +127,13 @@ exports.commands = {
 		list: function (target, room, user) {
 			if (!this.runBroadcast()) return;
 
-			let size = 50;
+			let size = 35px;
 			let lobby = Rooms('lobby');
 			if (lobby && lobby.emoteSize) size = lobby.emoteSize;
 			if (room.emoteSize) size = room.emoteSize;
 
 			let reply = `<strong><u>Emoticons (${Object.keys(emoticons).length})</u></strong><br />`;
-			for (let emote in emoticons) reply += `(${emote} <img src="${emoticons[emote]}" height="35px" width="35px">)`;
+			for (let emote in emoticons) reply += `(${emote} <img src="${emoticons[emote]}" height="${size}" width="${size}">)`;
 			this.sendReply(`|raw|<div class="infobox infobox-limited">${reply}</div>`);
 		},
 
