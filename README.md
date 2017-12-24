@@ -1,4 +1,4 @@
-WaveLength Server @ Pokémon Showdown
+Surge Server @ Pokémon Showdown
 ========================================================================
 
 Navigation: [Surge][1] | [PS Server repository][10] | [PS Client repository][2] | [PS Dex repository][3]
