@@ -227,10 +227,8 @@ exports.commands = {
 		});
 	},
 
-	givebuck: 'givecurrency', //You can change "gs" and "givestardust" to your currency name for an alias that applies to your currency Example: AwesomeBucks could be "ga" and "giveawesomebucks"
-	givebucks: 'givecurrency',
-	gc:'givecurrency',
-	givecurrency: function (target, room, user, connection, cmd) {
+	givebuck: 'givebucks', //You can change "gs" and "givestardust" to your currency name for an alias that applies to your currency Example: AwesomeBucks could be "ga" and "giveawesomebucks"
+	givebucks: function (target, room, user, connection, cmd) {
 		if (!this.can('forcewin')) return false;
 		if (!target) return this.sendReply("Usage: /" + cmd + " [user], [amount]");
 		let splitTarget = target.split(',');
@@ -262,10 +260,8 @@ exports.commands = {
 		});
 	},
 
-	takebuck: 'takecurrency', //You can change "ts" and "takestardust" to your currency name for an alias that applies to your currency Example: AwesomeBucks could be "ta" and "takeawesomebucks"
-	takebucks: 'takecurrency',
-	tc:'takecurrency',
-	takecurrency: function (target, room, user, connection, cmd) {
+	takebuck: 'takebucks', //You can change "ts" and "takestardust" to your currency name for an alias that applies to your currency Example: AwesomeBucks could be "ta" and "takeawesomebucks"
+	takebucks: function (target, room, user, connection, cmd) {
 		if (!this.can('forcewin')) return false;
 		if (!target) return this.sendReply("Usage: /" + cmd + " [user], [amount]");
 		let splitTarget = target.split(',');
