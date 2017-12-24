@@ -389,8 +389,7 @@ exports.commands = {
 	        Db.hasbg.remove(targetUser);
 	        this.sendReply('' + targetUser + '\'s ability to set his/her profile background has been taken.');
 	        Users(target).popup('Your ability to set your profile background has been taken by ' + user + '');
-	        
-	    },
+		 },
 
 		forceset: function (target, room, user) {
 			if (!this.can('ban')) return false;
@@ -498,7 +497,7 @@ exports.commands = {
 	},
 	musichelp: [
 		"/pmusic set [link], [title of song] - Sets your profile music. ( buy item from shop before using ).",
-		"/pmusic forceset [user], [link], [title] - Sets user\'s profile background. Requires @ or higher.",
+		"/pmusic forceset [user], [link], [title] - Sets user's profile background. Requires @ or higher.",
 		"/pmusic delete [user] - Removes a user's profile music. Requires @ or higher.",
 	],
 
@@ -586,13 +585,13 @@ exports.commands = {
 		let online = (targetUser ? targetUser.connected : false);
 		let username = (targetUser ? targetUser.name : target);
 		let userid = (targetUser ? targetUser.userid : toId(target));
-		let avatar = (targetUser ? (isNaN(targetUser.avatar) ? "http://" + serverIp + ":" + Config.port + "/avatars/" + targetUser.avatar : "http://play.pokemonshowdown.com/sprites/trainers/" + targetUser.avatar + ".png") : (Config.customavatars[userid] ? "http://" + WLIp + ":" + Config.port + "/avatars/" + Config.customavatars[userid] : "http://play.pokemonshowdown.com/sprites/trainers/1.png"));
+		let avatar = (targetUser ? (isNaN(targetUser.avatar) ? "http://" + serverIp + ":" + Config.port + "/avatars/" + targetUser.avatar : "http://play.pokemonshowdown.com/sprites/trainers/" + targetUser.avatar + ".png") : (Config.customavatars[userid] ? "http://" + serverIp + ":" + Config.port + "/avatars/" + Config.customavatars[userid] : "http://play.pokemonshowdown.com/sprites/trainers/1.png"));
 		if (targetUser && targetUser.avatar[0] === '#') avatar = 'http://play.pokemonshowdown.com/sprites/trainers/' + targetUser.avatar.substr(1) + '.png';
 		let userSymbol = (Users.usergroups[userid] ? Users.usergroups[userid].substr(0, 1) : "Regular User");
 		let userGroup = (Config.groups[userSymbol] ? 'Global ' + Config.groups[userSymbol].name : "Regular User");
-		let regdate = '(Unregistered)';
 		showProfile();
-		/*WL.regdate(userid, date => {
+		/*let regdate = '(Unregistered)';
+		WL.regdate(userid, date => {
 			if (date) {
 				let d = new Date(date);
 				let MonthNames = ["January", "February", "March", "April", "May", "June",
