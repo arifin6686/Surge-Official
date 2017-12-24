@@ -127,7 +127,7 @@ exports.commands = {
 		list: function (target, room, user) {
 			if (!this.runBroadcast()) return;
 
-			let size = 35px;
+			let size = 35;
 			let lobby = Rooms('lobby');
 			if (lobby && lobby.emoteSize) size = lobby.emoteSize;
 			if (room.emoteSize) size = room.emoteSize;
