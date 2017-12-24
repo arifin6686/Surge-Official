@@ -7,6 +7,8 @@
  **/
 'use strict';
 
+// Define Sb for sake of eslint.
+const Sb = require('origindb')('config/sb');
 let geoip = require('geoip-lite-country');
 
 // fill in '' with the WL IP
