@@ -95,4 +95,5 @@ exports.commands = {
 			'/poofon - Enable poof in a chat room. Requires # or higher.<br>' +
 			'/poofoff - Disable poof in a chat room. Requires # or higher.'
 		);
+	},
 };
