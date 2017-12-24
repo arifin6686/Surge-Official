@@ -1,4 +1,5 @@
 'use strict';
+const console = require('console.js');
 
 class SGgame extends Console.Console {
 	constructor(user, room, muted) {
