@@ -1,8 +1,12 @@
+/************
+* Poof By:
+* JD
+************/
 'use strict';
 
 const messages = [
-"ventured into Shrek's Swamp.",
-"disrespected the OgreLord!",
+	"ventured into Shrek's Swamp.",
+	"disrespected the OgreLord!",
 	"used Explosion!",
 	"was swallowed up by the Earth!",
 	"was eaten by Lex!",
@@ -33,38 +37,62 @@ const messages = [
 ];
 
 exports.commands = {
-	d: 'poof',
+	poofoff: 'poff',
+	poff: function (target, room, user) {
+		if (!this.can('gamemanagement', null, room)) return;
+		if (room.poofDisabled) {
+			return this.errorReply("Poof is already disabled in this room.");
+		}
+		room.poofDisabled = true;
+		if (room.chatRoomData) {
+			room.chatRoomData.poofDisabled = true;
+			Rooms.global.writeChatRoomData();
+		}
+		return this.sendReply("Poof has been disabled for this room.");
+	},
+
+	poofon: 'pon',
+	pon: function (target, room, user) {
+		if (!this.can('gamemanagement', null, room)) return;
+		if (!room.poofDisabled) {
+			return this.errorReply("Poof is already enabled in this room.");
+		}
+		delete room.poofDisabled;
+		if (room.chatRoomData) {
+			delete room.chatRoomData.poofDisabled;
+			Rooms.global.writeChatRoomData();
+		}
+		return this.sendReply("Poof has been enabled for this room.");
+	},
+
 	cpoof: 'poof',
 	poof: function (target, room, user) {
-		if (Config.poofOff) return this.sendReply("Poof is currently disabled.");
+		if (room.poofDisabled) return this.errorReply("Poof is currently disabled for this room.");
 		if (target && !this.can('broadcast')) return false;
-		/*if (room.id !== 'lobby') return false;*/
 		let message = target || messages[Math.floor(Math.random() * messages.length)];
 		if (message.indexOf('{{user}}') < 0) message = '{{user}} ' + message;
 		message = message.replace(/{{user}}/g, user.name);
 		if (!this.canTalk(message)) return false;
 
-		let colour = '#' + [1, 1, 1].map(function () {
+		let color = '#' + [1, 1, 1].map(function () {
 			let part = Math.floor(Math.random() * 0xaa);
 			return (part < 0x10 ? '0' : '') + part.toString(16);
 		}).join('');
 
-		room.addRaw('<center><strong><font color="' + colour + '">~~ ' + Chat.escapeHTML(message) + ' ~~</font></strong></center>');
+		room.addRaw('<center><strong><font color="' + color + '">~~ ' + Chat.escapeHTML(message) + ' ~~</font></strong></center>');
 		user.lastPoof = Date.now();
 		user.lastPoofMessage = message;
 		user.disconnectAll();
 	},
 
-	poofoff: 'nopoof',
-	nopoof: function () {
-		if (!this.can('ban')) return false;
-		Config.poofOff = true;
-		return this.sendReply("Poof is now disabled.");
-	},
-
-	poofon: function () {
-		if (!this.can('ban')) return false;
-		Config.poofOff = false;
-		return this.sendReply("Poof is now enabled.");
-	},
+	poofhelp: function (target, room, user) {
+		if (!this.runBroadcast()) return;
+		this.sendReplyBox(
+			'<center><b>Poof Commands</b></center>' +
+			'<hr width="80%">' +
+			'/poof - leave the server with random message. Requires + or higher.<br>' +
+			'/cpoof [message] - Leave server with custom message.<br>' +
+			'/poofon - Enable poof in a chat room. Requires # or higher.<br>' +
+			'/poofoff - Disable poof in a chat room. Requires # or higher.'
+		);
 };
