@@ -1,6 +1,6 @@
 'use strict';
 
-const Console = require('console.js');
+global.Console = require('./console.js');
 
 class SGgame extends Console.Console {
 	constructor(user, room, muted) {
