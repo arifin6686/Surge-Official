@@ -1,7 +1,3 @@
-/************
-* Poof By:
-* JD
-************/
 'use strict';
 
 const messages = [
