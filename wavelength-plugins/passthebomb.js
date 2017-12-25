@@ -46,7 +46,7 @@ class PassTheBomb extends Rooms.RoomGame {
 		let joined = players.filter(player => player.ip === user.latestIp);
 		if (joined.length) return self.errorReply("You have already joined this game of  under the name '" + joined[0].name + "'. Use that name/alt instead.");
 
-		this.players.set(user.userid, {'name':user.name, 'ip':user.latestIp, 'status':'alive', 'warnings':0});
+		this.players.set(user.userid, {'name': user.name, 'ip': user.latestIp, 'status':'alive', 'warnings': 0});
 		this.updateJoins();
 	}
 	leave(userid, self) {
@@ -93,7 +93,7 @@ class PassTheBomb extends Rooms.RoomGame {
 
 		this.release = setTimeout(() => {
 			this.setBomb();
-			let player = this.players.get(this.holder).name;
+			//let player = this.players.get(this.holder).name;
 			this.room.add('|uhtmlchange|' + this.getMsg() + '<br><strong style = "font-size: 10pt;">The bomb has been passed to </strong>' + WL.nameColor(this.holder, true) + '</div>').update();
 			this.canPass = true;
 			this.resetTimer();
