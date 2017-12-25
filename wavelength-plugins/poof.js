@@ -30,6 +30,7 @@ const messages = [
 	"ate a bomb!",
 	"left for a timeout!",
 	"fell into a snake pit!",
+	"felt snorlax's warth!",
 ];
 
 exports.commands = {
