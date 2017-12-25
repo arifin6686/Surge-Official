@@ -50,7 +50,7 @@ exports.commands = {
 			let targetUser = target.toLowerCase().trim();
 			if (!targetUser) return this.parse('/ssbd help');
 			Db.ssbdata.remove(targetUser);
-			this.sendReply('You have remove ' + targetUser +'\'s super staff pokemon data.');
+			this.sendReply('You have remove ' + targetUser + '\'s super staff pokemon data.');
 		},
 
 		view: 'show',
