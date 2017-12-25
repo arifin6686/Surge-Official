@@ -6,7 +6,7 @@
   "dependencies": {
     "autolinker": "^1.4.4",
     "geoip-lite-country": "^1.1.5",
-    "githubhook": "1.7.1",
+    "githubhook": "^1.9.3",
     "nef": "^1.1.0",
     "nef-fs": "^1.0.0",
     "request": "^2.83.0",
