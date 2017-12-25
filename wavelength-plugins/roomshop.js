@@ -8,6 +8,8 @@
 'use strict';
 
 const fs = require('fs');
+// Define for sake of eslint
+const Sb = require('origindb')('config/sb');
 const MAX_ITEMS = 12;
 
 exports.commands = {
